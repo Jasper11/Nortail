@@ -1,11 +1,15 @@
 package definitions;
 
+import dataProvider.JsonDataReader;
 import pageObjects.SampleListScreen;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.LoginScreen;
 import org.testng.Assert;
+import testDataTypes.UserCredentials;
+
+import java.io.IOException;
 
 public class LoginPageDefinitions {
 
@@ -17,9 +21,10 @@ public class LoginPageDefinitions {
         Assert.assertTrue(loginScreen.isLoginScreenDisplayed());
     }
 
-    @When("User enters username as {string} and password as {string}")
-    public void doLogin(String userName, String passWord) {
-        loginScreen.login(userName, passWord);
+    @When("User enters {string}")
+    public void doLogin(String credentialsSetName) throws IOException {
+        UserCredentials credentials = new JsonDataReader().getCredentialsSetByName(credentialsSetName);
+        loginScreen.login(credentials.username, credentials.password);
     }
 
     @Then("User is logged successfully and Sample List screen is opened")
@@ -31,14 +36,4 @@ public class LoginPageDefinitions {
     public void verifyErrorMessage(String errorText) {
         Assert.assertTrue(loginScreen.isPopUpWithTextDisplayed(errorText));
     }
-
-    @Then("User sees error message <errorText>")
-    public void userSeesErrorMessageErrorText() {
-    }
-//
-//    @Then("User should be able to see a message {string} below Username")
-//    public void verifyMissingUsernameMessage(String message) {
-//
-//        Assert.assertEquals(loginScreen.getMissingUsernameText(),message);
-//    }
 }

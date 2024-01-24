@@ -1,0 +1,29 @@
+[
+  {
+    "credentialsSetName": "valid",
+    "username": "admin",
+    "password": "admin"
+  },
+  {
+    "credentialsSetName": "invalid_1",
+    "username": "Admin",
+    "password": "KKKKKK"
+  },
+  {
+    "credentialsSetName": "invalid_2",
+    "username": "Admin22",
+    "password": "KKKKKK"
+  },
+
+  {
+    "credentialsSetName": "empty_1",
+    "username": "",
+    "password": "admin"
+  },
+
+  {
+    "credentialsSetName": "empty_2",
+    "username": "admin",
+    "password": ""
+  }
+]

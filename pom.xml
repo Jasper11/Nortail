@@ -44,6 +44,11 @@
             <version>7.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
 
 
     </dependencies>
@@ -68,8 +73,8 @@
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <deviceId>id</deviceId>
-                        <appPath>path</appPath>
+                        <deviceId>emulator-5554</deviceId>
+                        <appPath>src/test/apks/appiumChallenge.apk</appPath>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
