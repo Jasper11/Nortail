@@ -67,6 +67,10 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <deviceId>id</deviceId>
+                        <appPath>path</appPath>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>

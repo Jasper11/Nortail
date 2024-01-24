@@ -15,9 +15,9 @@ public class HelperClass {
         service.start();
 
         UiAutomator2Options options = new UiAutomator2Options()
-            .setUdid("emulator-5554")
+            .setUdid(System.getProperty("deviceId"))
             .autoGrantPermissions()
-            .setApp("src/test/apks/appiumChallenge.apk");
+            .setApp(System.getProperty("appPath"));
 
         driver = new AndroidDriver(service.getUrl(), options);
     }

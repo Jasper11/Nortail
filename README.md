@@ -78,10 +78,9 @@ To ensure that Java, Maven, Appium, and the Android SDK are installed correctly,
 
 ## Running Tests from Terminal
 
-1. Open a terminal and start the Appium server:
+1. Open a terminal in project root folder and run:
 
     ```bash
-    mvn clean test
-    ```
+    mvn clean test -DdeviceId={id} -DappPath={app path}
 
-Congratulations! Your PC is now equipped with Maven, Java 8, Appium, and the Android SDK. You're ready to commence mobile application development and testing.
+    ```
