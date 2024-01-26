@@ -2,6 +2,7 @@ package steps;
 
 import dataProvider.JsonDataReader;
 import pageObjects.DoubleTapDemoScreen;
+import pageObjects.LongPressDemoScreen;
 import pageObjects.SampleListScreen;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,6 +18,7 @@ public class Steps {
     LoginScreen loginScreen = new LoginScreen();
     SampleListScreen sampleListScreen = new SampleListScreen();
     DoubleTapDemoScreen doubleTapDemoScreen = new DoubleTapDemoScreen();
+    LongPressDemoScreen longPressDemoScreen = new LongPressDemoScreen();
 
     @Given("User is on login screen")
     public void verifyLoginScreenIsDisplayed() {
@@ -42,6 +44,11 @@ public class Steps {
     @When("User make double tap on button")
     public void makeDoubleTap() {
         doubleTapDemoScreen.doubleTapButton();
+    }
+
+    @When("User make long press on button")
+    public void makeLongPress() {
+        longPressDemoScreen.longPressButton();
     }
 
     @Then("User is logged successfully and Sample List screen is opened")
