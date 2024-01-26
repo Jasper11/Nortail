@@ -30,6 +30,15 @@ public abstract class BaseScreen {
         return waitForElementVisibility(popUpTextElement).getText().equals(text);
     }
 
+    public boolean isDisplayed(By element){
+        try {
+            return waitForElementVisibility(element).isDisplayed();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public WebElement waitForElementVisibility(By element) {
         return new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(DEFAULT_EXPLICIT_WAIT_TIMEOUT))
@@ -122,7 +131,7 @@ public abstract class BaseScreen {
             .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
             .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
             .addAction(new Pause(finger1, Duration.ofMillis(200)))
-            .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), endX, endY))
+            .addAction(finger1.createPointerMove(Duration.ofMillis(200), PointerInput.Origin.viewport(), endX, endY))
             .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(sequence));

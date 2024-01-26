@@ -1,6 +1,7 @@
 package steps;
 
 import dataProvider.JsonDataReader;
+import pageObjects.CarouselDemoScreen;
 import pageObjects.DoubleTapDemoScreen;
 import pageObjects.DragNDropDemoScreen;
 import pageObjects.LongPressDemoScreen;
@@ -11,6 +12,7 @@ import io.cucumber.java.en.When;
 import pageObjects.LoginScreen;
 import org.testng.Assert;
 import testDataTypes.UserCredentials;
+import utils.Direction;
 
 import java.io.IOException;
 
@@ -21,6 +23,7 @@ public class Steps {
     DoubleTapDemoScreen doubleTapDemoScreen = new DoubleTapDemoScreen();
     LongPressDemoScreen longPressDemoScreen = new LongPressDemoScreen();
     DragNDropDemoScreen dragNDropDemoScreen = new DragNDropDemoScreen();
+    CarouselDemoScreen carouselDemoScreen = new CarouselDemoScreen();
 
     /// Login screen steps
     @Given("User is on login screen")
@@ -71,6 +74,22 @@ public class Steps {
     @Then("User sees success message")
     public void verifySuccessMessage() {
         Assert.assertTrue(dragNDropDemoScreen.successMessageIsDisplayed());
+    }
+
+    /// Swipe  screen steps
+    @When("User swipe left")
+    public void swipeLeft() {
+        carouselDemoScreen.performSwipe(Direction.LEFT);
+    }
+
+    @When("User swipe right")
+    public void swipeRight() {
+        carouselDemoScreen.performSwipe(Direction.RIGHT);
+    }
+
+    @Then("User sees text {string}")
+    public void verifyTextChanged(String text) {
+        Assert.assertTrue(carouselDemoScreen.messageWithTextDisplayed(text));
     }
 
     /// Common steps
