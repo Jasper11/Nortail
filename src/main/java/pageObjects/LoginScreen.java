@@ -1,20 +1,14 @@
 package pageObjects;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import utils.HelperClass;
 
 public class LoginScreen extends BaseScreen{
 
-    @FindBy(xpath = "//android.widget.EditText[@content-desc='username']")
-    public WebElement userNameField;
-
-    @FindBy(xpath = "//android.widget.EditText[@content-desc='password']")
-    public WebElement passwordField;
-
-    @FindBy(xpath = "//android.widget.Button")
-    public WebElement loginButton;
+    By userNameField = By.xpath("//android.widget.EditText[@content-desc='username']");
+    By passwordField = By.xpath("//android.widget.EditText[@content-desc='password']");
+    By loginButton = By.xpath("//android.widget.Button");
 
     public LoginScreen() {
 
@@ -22,12 +16,12 @@ public class LoginScreen extends BaseScreen{
     }
 
     public boolean isLoginScreenDisplayed() {
-        return loginButton.isDisplayed();
+        return waitForElementVisibility(loginButton).isDisplayed();
     }
 
     public void login(String strUserName, String strPassword) {
-        userNameField.sendKeys(strUserName);
-        passwordField.sendKeys(strPassword);
-        loginButton.click();
+        waitForElementVisibility(userNameField).sendKeys(strUserName);
+        waitForElementVisibility(passwordField).sendKeys(strPassword);
+        waitForElementVisibility(loginButton).click();
     }
 }
