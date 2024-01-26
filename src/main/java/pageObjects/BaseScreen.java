@@ -19,7 +19,7 @@ import java.util.Collections;
 
 public abstract class BaseScreen {
     protected AndroidDriver driver;
-    public static final int DEFAULT_EXPLICIT_WAIT_TIMEOUT = 10;
+    public static final int DEFAULT_EXPLICIT_WAIT_TIMEOUT = 5;
     By popUpTextElement = By.id("android:id/message");
 
     public BaseScreen() {
@@ -80,7 +80,7 @@ public abstract class BaseScreen {
             .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), sourceElementCenter))
             .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
             .addAction(new Pause(finger1, Duration.ofMillis(500)))
-            .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), targetElementCenter))
+            .addAction(finger1.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), targetElementCenter))
             .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(sequence));

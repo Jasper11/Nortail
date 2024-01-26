@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import utils.Direction;
 
 public class SampleListScreen extends BaseScreen {
 
@@ -11,6 +12,12 @@ public class SampleListScreen extends BaseScreen {
     }
 
     public void navigateTo(String viewItem) {
-        waitForElementVisibility(By.xpath(String.format("//android.widget.TextView[@text='%s']", viewItem))).click();
+        By element = By.xpath(String.format("//android.widget.TextView[@text='%s']", viewItem));
+
+        while (!waitForElementVisibility(element).isDisplayed()) {
+            performSwipe(Direction.UP);
+        }
+
+        waitForElementVisibility(element).click();
     }
 }

@@ -13,19 +13,15 @@ Feature: Login
 
   @InvalidCredentials
   Scenario Outline: Login with invalid credentials
-
     When User enters "<credentials>"
     Then User sees message as "<errorText>"
-
     Examples:
       | credentials | errorText            |
       | invalid_1   | Invalid  Credentials |
       | invalid_2   | Invalid  Credentials |
 
-
   @MissingUsername/Password
   Scenario Outline: Login with blank username/password
-
     When User enters "<credentials>"
     Then User sees message as "<errorText>"
 
@@ -48,3 +44,8 @@ Feature: Test Views
     When User navigates to "Long Press" view
     And User make long press on button
     Then User sees message as "you pressed me hard :P"
+
+  Scenario: Test Drag&Drop
+    When User navigates to "Drag & Drop" view
+    And User drag n drop circle
+    Then User sees success message
