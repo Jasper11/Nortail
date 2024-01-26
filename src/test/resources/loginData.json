@@ -14,13 +14,11 @@
     "username": "admin",
     "password": "admin#"
   },
-
   {
     "credentialsSetName": "empty_1",
     "username": "",
     "password": "admin"
   },
-
   {
     "credentialsSetName": "empty_2",
     "username": "admin",

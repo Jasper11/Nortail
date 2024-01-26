@@ -28,7 +28,7 @@ public class JsonDataReader {
         }
     }
 
-    public final UserCredentials getCredentialsSetByName(String name){
+    public final UserCredentials getCredentialsSetByName(String name) {
         return userCredentialsList.stream().filter(x -> x.credentialsSetName.equalsIgnoreCase(name)).findAny().get();
     }
 

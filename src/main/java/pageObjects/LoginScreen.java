@@ -2,7 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
-public class LoginScreen extends BaseScreen{
+public class LoginScreen extends BaseScreen {
 
     By userNameField = By.xpath("//android.widget.EditText[@content-desc='username']");
     By passwordField = By.xpath("//android.widget.EditText[@content-desc='password']");
@@ -15,6 +15,10 @@ public class LoginScreen extends BaseScreen{
     public void login(String strUserName, String strPassword) {
         waitForElementVisibility(userNameField).sendKeys(strUserName);
         waitForElementVisibility(passwordField).sendKeys(strPassword);
+        waitForElementVisibility(loginButton).click();
+    }
+
+    public void login() {
         waitForElementVisibility(loginButton).click();
     }
 }

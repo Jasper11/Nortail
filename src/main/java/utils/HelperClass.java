@@ -28,7 +28,7 @@ public class HelperClass {
 
     public static void setUpDriver() {
 
-        if (instance ==null) {
+        if (instance == null) {
 
             instance = new HelperClass();
         }
@@ -36,7 +36,7 @@ public class HelperClass {
 
     public static void tearDown() {
 
-        if(driver!=null) {
+        if (driver != null) {
             driver.quit();
             service.stop();
         }

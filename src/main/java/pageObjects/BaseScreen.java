@@ -38,13 +38,13 @@ public abstract class BaseScreen {
             .until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    public Point getElementCenter(WebElement element){
+    public Point getElementCenter(WebElement element) {
         Point location = element.getLocation();
         Dimension size = element.getSize();
-        return new Point(location.getX() + size.getWidth() / 2,  location.getY() + size.getHeight() / 2);
+        return new Point(location.getX() + size.getWidth() / 2, location.getY() + size.getHeight() / 2);
     }
 
-    public void doubleTap(WebElement element){
+    public void doubleTap(WebElement element) {
         Point elementCenter = getElementCenter(element);
         PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence sequence = new Sequence(finger1, 1)
@@ -53,12 +53,14 @@ public abstract class BaseScreen {
             .addAction(new Pause(finger1, Duration.ofMillis(100)))
             .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()))
             .addAction(new Pause(finger1, Duration.ofMillis(100)))
-            .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+            .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+            .addAction(new Pause(finger1, Duration.ofMillis(100)))
+            .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(sequence));
     }
 
-    public void longPress(WebElement element){
+    public void longPress(WebElement element) {
         Point elementCenter = getElementCenter(element);
         PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence sequence = new Sequence(finger1, 1)
@@ -70,7 +72,7 @@ public abstract class BaseScreen {
         driver.perform(Collections.singletonList(sequence));
     }
 
-    public void dragNDrop(WebElement sourceElement, WebElement targetElement){
+    public void dragNDrop(WebElement sourceElement, WebElement targetElement) {
         Point sourceElementCenter = getElementCenter(sourceElement);
         Point targetElementCenter = getElementCenter(targetElement);
         PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
@@ -84,7 +86,7 @@ public abstract class BaseScreen {
         driver.perform(Collections.singletonList(sequence));
     }
 
-    public void performSwipe(Direction direction){
+    public void performSwipe(Direction direction) {
         Dimension size = driver.manage().window().getSize();
         int startY = 0;
         int endY = 0;
