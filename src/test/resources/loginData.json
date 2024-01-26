@@ -6,13 +6,13 @@
   },
   {
     "credentialsSetName": "invalid_1",
-    "username": "Admin",
-    "password": "KKKKKK"
+    "username": "admin#",
+    "password": "admin"
   },
   {
     "credentialsSetName": "invalid_2",
-    "username": "Admin22",
-    "password": "KKKKKK"
+    "username": "admin",
+    "password": "admin#"
   },
 
   {

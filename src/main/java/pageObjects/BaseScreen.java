@@ -20,13 +20,14 @@ import java.util.Collections;
 public abstract class BaseScreen {
     protected AndroidDriver driver;
     public static final int DEFAULT_EXPLICIT_WAIT_TIMEOUT = 10;
+    By popUpTextElement = By.id("android:id/message");
 
     public BaseScreen() {
         this.driver = HelperClass.getDriver();
     }
 
     public boolean isPopUpWithTextDisplayed(String text) {
-        return waitForElementVisibility(By.id("android:id/message")).getText().equals(text);
+        return waitForElementVisibility(popUpTextElement).getText().equals(text);
     }
 
     public WebElement waitForElementVisibility(By element) {
