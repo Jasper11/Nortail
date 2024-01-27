@@ -5,13 +5,15 @@ import pageObjects.CarouselDemoScreen;
 import pageObjects.DoubleTapDemoScreen;
 import pageObjects.DragNDropDemoScreen;
 import pageObjects.LongPressDemoScreen;
-import pageObjects.SampleListScreen;
+import pageObjects.NativeViewDemoScreen;
+import pageObjects.SampleListDemoScreen;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.LoginScreen;
+import pageObjects.LoginDemoScreen;
 import org.testng.Assert;
 import pageObjects.SliderDemoScreen;
+import pageObjects.VerticalSwipeDemoScreen;
 import pageObjects.WheelPickerDemoScreen;
 import testDataTypes.UserCredentials;
 import enums.Direction;
@@ -20,41 +22,55 @@ import java.io.IOException;
 
 public class Steps {
 
-    LoginScreen loginScreen = new LoginScreen();
-    SampleListScreen sampleListScreen = new SampleListScreen();
+    LoginDemoScreen loginDemoScreen = new LoginDemoScreen();
+    SampleListDemoScreen sampleListDemoScreen = new SampleListDemoScreen();
+    NativeViewDemoScreen nativeViewDemoScreen = new NativeViewDemoScreen();
     DoubleTapDemoScreen doubleTapDemoScreen = new DoubleTapDemoScreen();
     LongPressDemoScreen longPressDemoScreen = new LongPressDemoScreen();
     DragNDropDemoScreen dragNDropDemoScreen = new DragNDropDemoScreen();
     CarouselDemoScreen carouselDemoScreen = new CarouselDemoScreen();
     WheelPickerDemoScreen wheelPickerDemoScreen = new WheelPickerDemoScreen();
     SliderDemoScreen sliderDemoScreen = new SliderDemoScreen();
+    VerticalSwipeDemoScreen verticalSwipeDemoScreen = new VerticalSwipeDemoScreen();
 
     /// Login steps
     @Given("User is on login screen")
     public void verifyLoginScreenIsDisplayed() {
-        Assert.assertTrue(loginScreen.isLoginScreenDisplayed());
+        Assert.assertTrue(loginDemoScreen.isLoginScreenDisplayed());
     }
 
     @When("User perform login with {string}")
     public void performLogin(String credentialsSetName) throws IOException {
         UserCredentials credentials = new JsonDataReader().getCredentialsSetByName(credentialsSetName);
-        loginScreen.login(credentials.username, credentials.password);
+        loginDemoScreen.login(credentials.username, credentials.password);
     }
 
     @Then("User is logged successfully and Sample List screen is opened")
     public void verifyLogin() {
-        Assert.assertTrue(sampleListScreen.isSampleListScreenDisplayed());
+        Assert.assertTrue(sampleListDemoScreen.isSampleListScreenDisplayed());
     }
 
     /// Sample list steps
     @Given("User is on sample list screen")
     public void proceedToSampleListScreen() {
-        loginScreen.login();
+        loginDemoScreen.login();
     }
 
     @When("User navigates to {string} view")
     public void navigateToView(String view) {
-        sampleListScreen.navigateTo(view);
+        sampleListDemoScreen.navigateTo(view);
+    }
+
+    /// Native View steps
+    @Then("User sees text {string} on native view")
+    public void verifyTextDisplayed(String text) {
+        Assert.assertTrue(nativeViewDemoScreen.textDisplayed(text));
+    }
+
+    /// Vertical swipe steps
+    @Then("User sees {string} text on vertical swipe view")
+    public void isTextDisplayed(String text) {
+        Assert.assertTrue(verticalSwipeDemoScreen.checkIsTextDisplayed(text));
     }
 
     /// Double tap screen steps
@@ -121,6 +137,6 @@ public class Steps {
     /// Common steps
     @Then("User sees message as {string}")
     public void verifyErrorMessage(String errorText) {
-        Assert.assertTrue(loginScreen.isPopUpWithTextDisplayed(errorText));
+        Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(errorText));
     }
 }

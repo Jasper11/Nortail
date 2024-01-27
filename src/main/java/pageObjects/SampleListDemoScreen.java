@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import enums.Direction;
 import org.openqa.selenium.NotFoundException;
 
-public class SampleListScreen extends BaseScreen {
+public class SampleListDemoScreen extends BaseScreen {
 
     By screenHeader = By.xpath("//android.widget.TextView[@text='Samples List']");
 

@@ -2,7 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
-public class LoginScreen extends BaseScreen {
+public class LoginDemoScreen extends BaseScreen {
 
     By userNameField = By.xpath("//android.widget.EditText[@content-desc='username']");
     By passwordField = By.xpath("//android.widget.EditText[@content-desc='password']");
