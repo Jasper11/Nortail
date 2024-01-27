@@ -6,10 +6,10 @@ import org.openqa.selenium.NotFoundException;
 
 public class VerticalSwipeDemoScreen extends BaseScreen {
 
-    public boolean isTextDisplayed(String text) {
+    public boolean isElementWithTextDisplayed(String text) {
         By element = By.xpath(String.format("//android.widget.TextView[@text='%s']", text));
         int counter = 0;
-        while (!isDisplayed(element) && counter < 3) {
+        while (!isElementDisplayed(element) && counter < 3) {
             performSwipe(Direction.UP);
             counter++;
             if (counter == 3) {

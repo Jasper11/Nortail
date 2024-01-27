@@ -15,7 +15,7 @@ public class SampleListDemoScreen extends BaseScreen {
     public void navigateTo(String viewItem) {
         By element = By.xpath(String.format("//android.widget.TextView[@text='%s']", viewItem));
         int counter = 0;
-        while (!isDisplayed(element) && counter < 3) {
+        while (!isElementDisplayed(element) && counter < 3) {
             performSwipe(Direction.UP);
             counter++;
             if (counter == 3) {

@@ -30,12 +30,12 @@ public abstract class BaseScreen {
         return waitForElementVisibility(popUpTextElement).getText().equals(text);
     }
 
-    public boolean isTextDisplayed(String text) {
+    public boolean isElementWithTextDisplayed(String text) {
         By successMessage = By.xpath(String.format("//android.widget.TextView[@text='%s']", text));
         return waitForElementVisibility(successMessage).isDisplayed();
     }
 
-    public boolean isDisplayed(By element) {
+    public boolean isElementDisplayed(By element) {
         try {
             return waitForElementVisibility(element).isDisplayed();
         } catch (Exception e) {

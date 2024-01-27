@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NativeViewDemoScreen extends BaseScreen {
 
-    public boolean isTextDisplayed(String text) {
+    public boolean isElementWithTextDisplayed(String text) {
         By message = By.xpath("//android.widget.TextView");
         waitForElementVisibility(message);
         List<String> texts = new ArrayList<>();

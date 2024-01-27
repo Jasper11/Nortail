@@ -28,7 +28,7 @@ Feature: Test Views
   Scenario: Test Picker
     When User navigates to "Wheel Picker" view
     And Select in picker item with "green" text
-    Then User sees message with "Current Color: green" text
+    Then User sees message with " Current Color: green " text
 
   Scenario: Test Slider
     When User navigates to "Slider" view

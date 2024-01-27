@@ -64,13 +64,13 @@ public class Steps {
     /// Native View steps
     @Then("Text {string} is present")
     public void verifyTextDisplayed(String text) {
-        Assert.assertTrue(nativeViewDemoScreen.isTextDisplayed(text));
+        Assert.assertTrue(nativeViewDemoScreen.isElementWithTextDisplayed(text));
     }
 
     /// Vertical swipe steps
     @Then("Observes {string} text on vertical swipe view")
     public void isTextDisplayed(String text) {
-        Assert.assertTrue(verticalSwipeDemoScreen.isTextDisplayed(text));
+        Assert.assertTrue(verticalSwipeDemoScreen.isElementWithTextDisplayed(text));
     }
 
     /// Double tap screen steps
@@ -109,7 +109,7 @@ public class Steps {
 
     @Then("User observe text {string} on Square")
     public void verifyText(String text) {
-        Assert.assertTrue(carouselDemoScreen.isTextDisplayed(text));
+        Assert.assertTrue(carouselDemoScreen.isElementWithTextDisplayed(text));
     }
 
     /// Dropdown Picker steps
@@ -120,7 +120,7 @@ public class Steps {
 
     @Then("User sees message with {string} text")
     public void verifyPickerSelectedItemText(String text) {
-        Assert.assertTrue(wheelPickerDemoScreen.isTextDisplayed(text));
+        Assert.assertTrue(wheelPickerDemoScreen.isElementWithTextDisplayed(text));
     }
 
     /// Slider steps
