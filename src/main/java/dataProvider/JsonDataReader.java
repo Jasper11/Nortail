@@ -18,7 +18,7 @@ public class JsonDataReader {
     }
 
     private List<UserCredentials> getUserCredentialsData() throws IOException {
-        String loginDataFilePath = "src/test/resources/loginData.json";
+        String loginDataFilePath = "src/test/resources/testData/loginData.json";
         Gson gson = new Gson();
         try (BufferedReader bufferReader = new BufferedReader(new FileReader(loginDataFilePath))) {
             UserCredentials[] userCredentialsData = gson.fromJson(bufferReader, UserCredentials[].class);
