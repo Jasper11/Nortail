@@ -56,3 +56,8 @@ Feature: Test Views
     Then User sees text "2"
     When User swipe right
     Then User sees text "1"
+
+  Scenario: Test Picker
+    When User navigates to "Wheel Picker" view
+    When User selects in picker item with "green" text
+    Then User sees message with "Current Color: green" text

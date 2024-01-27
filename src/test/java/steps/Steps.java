@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.LoginScreen;
 import org.testng.Assert;
+import pageObjects.WheelPickerDemoScreen;
 import testDataTypes.UserCredentials;
 import enums.Direction;
 
@@ -24,6 +25,7 @@ public class Steps {
     LongPressDemoScreen longPressDemoScreen = new LongPressDemoScreen();
     DragNDropDemoScreen dragNDropDemoScreen = new DragNDropDemoScreen();
     CarouselDemoScreen carouselDemoScreen = new CarouselDemoScreen();
+    WheelPickerDemoScreen wheelPickerDemoScreen = new WheelPickerDemoScreen();
 
     /// Login steps
     @Given("User is on login screen")
@@ -90,6 +92,17 @@ public class Steps {
     @Then("User sees text {string}")
     public void verifyTextChanged(String text) {
         Assert.assertTrue(carouselDemoScreen.messageWithTextDisplayed(text));
+    }
+
+    /// Dropdown Picker steps
+    @When("User selects in picker item with {string} text")
+    public void selectPickerItem(String text) {
+        wheelPickerDemoScreen.selectPickerItemWithText(text);
+    }
+
+    @Then("User sees message with {string} text")
+    public void verifyPickerSelectedItemText(String text) {
+        Assert.assertTrue(wheelPickerDemoScreen.messageWithTextDisplayed(text));
     }
 
     /// Common steps
