@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import utils.Direction;
+import enums.Direction;
 import utils.HelperClass;
 
 import java.time.Duration;

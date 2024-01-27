@@ -1,7 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
-import utils.Direction;
+import enums.Direction;
 
 public class SampleListScreen extends BaseScreen {
 

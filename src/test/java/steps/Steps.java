@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 import pageObjects.LoginScreen;
 import org.testng.Assert;
 import testDataTypes.UserCredentials;
-import utils.Direction;
+import enums.Direction;
 
 import java.io.IOException;
 
@@ -25,15 +25,10 @@ public class Steps {
     DragNDropDemoScreen dragNDropDemoScreen = new DragNDropDemoScreen();
     CarouselDemoScreen carouselDemoScreen = new CarouselDemoScreen();
 
-    /// Login screen steps
+    /// Login steps
     @Given("User is on login screen")
     public void verifyLoginScreenIsDisplayed() {
         Assert.assertTrue(loginScreen.isLoginScreenDisplayed());
-    }
-
-    @Given("User is on sample list screen")
-    public void proceedToSampleListScreen() {
-        loginScreen.login();
     }
 
     @When("User enters {string}")
@@ -42,15 +37,20 @@ public class Steps {
         loginScreen.login(credentials.username, credentials.password);
     }
 
-    /// Sample list screen steps
-    @When("User navigates to {string} view")
-    public void navigateToView(String view) {
-        sampleListScreen.navigateTo(view);
-    }
-
     @Then("User is logged successfully and Sample List screen is opened")
     public void verifyLogin() {
         Assert.assertTrue(sampleListScreen.isSampleListScreenDisplayed());
+    }
+
+    /// Sample list steps
+    @Given("User is on sample list screen")
+    public void proceedToSampleListScreen() {
+        loginScreen.login();
+    }
+
+    @When("User navigates to {string} view")
+    public void navigateToView(String view) {
+        sampleListScreen.navigateTo(view);
     }
 
     /// Double tap screen steps
