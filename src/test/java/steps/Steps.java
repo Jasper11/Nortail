@@ -113,7 +113,7 @@ public class Steps {
         sliderDemoScreen.setSliderValue(percentage);
     }
 
-    @Then("User sees slider set with {string} percentage value")
+    @Then("slider is set with {string} value")
     public void verifySliderValue(String text) {
         Assert.assertTrue(sliderDemoScreen.isSliderSetWithValue(text));
     }

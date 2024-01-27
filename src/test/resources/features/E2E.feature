@@ -64,5 +64,5 @@ Feature: Test Views
 
   Scenario: Test Slider
     When User navigates to "Slider" view
-    And User sets slider value with 0.2 percentage
-    Then User sees slider set with "21.0" percentage value
+    And User sets slider value with 0.5 percentage
+    Then slider is set with "64.0" value

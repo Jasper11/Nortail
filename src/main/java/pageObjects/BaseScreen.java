@@ -99,7 +99,7 @@ public abstract class BaseScreen {
         driver.perform(Collections.singletonList(sequence));
     }
 
-    public void swipeElementForItsWidthPercentage(WebElement element, double percentage) {
+    public void swipeElementForItsWidthPercentage(WebElement element, Double percentage) {
         Point location = element.getLocation();
         Dimension size = element.getSize();
 
