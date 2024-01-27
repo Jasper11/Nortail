@@ -76,11 +76,44 @@ To ensure that Java, Maven, Appium, and the Android SDK are installed correctly,
     sdkmanager --version
     ```
 
+## Android Emulator Setup (if nedeed)
+
+#### 1. Install Required SDK Components
+Open a terminal and run the following commands to install the necessary SDK components:
+
+```bash
+sdkmanager "platform-tools" "platforms;android-<version>" "emulator" "system-images;android-<version>;google_apis;<version>"
+```
+
+Replace `<version>` with the Android & Google APIs version you want to emulate.
+
+#### 2. Create AVD (Android Virtual Device)
+
+Use the following command to create an AVD with desired specifications:
+
+```bash
+avdmanager create avd -n <emulator_name> -k "system-images;android-<version>;google_apis;<version>"
+```
+
+Replace `<emulator_name>` with the desired name for your emulator, and `<version>` with the Android & Google APIs version you want to emulate.
+
+#### 3. Start Android Emulator
+
+Launch your Android Emulator using the following command:
+
+```bash
+emulator -avd <emulator_name>
+```
+
+Replace `<emulator_name>` with the name of your configured AVD.
+
+Now you have set up the Android Emulator and are ready to use it for testing with Appium.
+
 ## Running Tests from Terminal
 
 1. Open a terminal in project root folder and run:
 
     ```bash
-    mvn clean test -DdeviceId={id} -DappPath={app path}
+    mvn clean test -DdeviceId={device_or_simulator_id} -DappPath={app_path}
 
     ```
