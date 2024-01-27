@@ -35,7 +35,7 @@ public class Steps {
         Assert.assertTrue(loginScreen.isLoginScreenDisplayed());
     }
 
-    @When("User enters {string}")
+    @When("User perform login with {string}")
     public void performLogin(String credentialsSetName) throws IOException {
         UserCredentials credentials = new JsonDataReader().getCredentialsSetByName(credentialsSetName);
         loginScreen.login(credentials.username, credentials.password);
@@ -53,7 +53,7 @@ public class Steps {
     }
 
     @When("User navigates to {string} view")
-    public void navigateToView(String view) throws Exception {
+    public void navigateToView(String view) {
         sampleListScreen.navigateTo(view);
     }
 
