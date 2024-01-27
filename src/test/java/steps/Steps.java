@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.LoginScreen;
 import org.testng.Assert;
+import pageObjects.SliderDemoScreen;
 import pageObjects.WheelPickerDemoScreen;
 import testDataTypes.UserCredentials;
 import enums.Direction;
@@ -26,6 +27,7 @@ public class Steps {
     DragNDropDemoScreen dragNDropDemoScreen = new DragNDropDemoScreen();
     CarouselDemoScreen carouselDemoScreen = new CarouselDemoScreen();
     WheelPickerDemoScreen wheelPickerDemoScreen = new WheelPickerDemoScreen();
+    SliderDemoScreen sliderDemoScreen = new SliderDemoScreen();
 
     /// Login steps
     @Given("User is on login screen")
@@ -103,6 +105,17 @@ public class Steps {
     @Then("User sees message with {string} text")
     public void verifyPickerSelectedItemText(String text) {
         Assert.assertTrue(wheelPickerDemoScreen.messageWithTextDisplayed(text));
+    }
+
+    /// Slider steps
+    @When("User sets slider value with {double} percentage")
+    public void setSliderValueInPercentage(Double percentage) {
+        sliderDemoScreen.setSliderValue(percentage);
+    }
+
+    @Then("User sees slider set with {string} percentage value")
+    public void verifySliderValue(String text) {
+        Assert.assertTrue(sliderDemoScreen.isSliderSetWithValue(text));
     }
 
     /// Common steps

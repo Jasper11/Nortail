@@ -30,7 +30,7 @@ public abstract class BaseScreen {
         return waitForElementVisibility(popUpTextElement).getText().equals(text);
     }
 
-    public boolean isDisplayed(By element){
+    public boolean isDisplayed(By element) {
         try {
             return waitForElementVisibility(element).isDisplayed();
         } catch (Exception e) {
@@ -89,7 +89,30 @@ public abstract class BaseScreen {
             .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), sourceElementCenter))
             .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
             .addAction(new Pause(finger1, Duration.ofMillis(500)))
-            .addAction(finger1.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), targetElementCenter))
+            .addAction(finger1.createPointerMove(
+                Duration.ofMillis(500),
+                PointerInput.Origin.viewport(),
+                targetElementCenter
+            ))
+            .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(sequence));
+    }
+
+    public void swipeElementForItsWidthPercentage(WebElement element, double percentage) {
+        Point location = element.getLocation();
+        Dimension size = element.getSize();
+
+        int startX = location.getX();
+        int startY = location.getY();
+        int endX = (int) (startX + size.getWidth() * percentage);
+
+        PointerInput finger1 = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
+        Sequence sequence = new Sequence(finger1, 1)
+            .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+            .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+            .addAction(new Pause(finger1, Duration.ofMillis(500)))
+            .addAction(finger1.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endX, startY))
             .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(sequence));
