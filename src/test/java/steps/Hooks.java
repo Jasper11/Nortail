@@ -7,11 +7,11 @@ import utils.HelperClass;
 public class Hooks {
     @Before
     public static void launchApp() {
-        HelperClass.getDriver().activateApp("com.vodqareactnative");
+        HelperClass.getDriver().activateApp(HelperClass.getCurrentAppBundleId());
     }
 
     @After
     public static void closeApp() {
-        HelperClass.getDriver().terminateApp("com.vodqareactnative");
+        HelperClass.getDriver().terminateApp(HelperClass.getCurrentAppBundleId());
     }
 }

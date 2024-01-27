@@ -9,6 +9,7 @@ public class HelperClass {
     private static HelperClass instance;
     private static AndroidDriver driver;
     private static AppiumDriverLocalService service;
+    private static String currentAppBundleId;
 
     private HelperClass() {
         service = AppiumDriverLocalService.buildDefaultService();
@@ -20,10 +21,15 @@ public class HelperClass {
             .setApp(System.getProperty("appPath"));
 
         driver = new AndroidDriver(service.getUrl(), options);
+        currentAppBundleId = driver.getCurrentPackage();
     }
 
     public static AndroidDriver getDriver() {
         return driver;
+    }
+
+    public static String getCurrentAppBundleId() {
+        return currentAppBundleId;
     }
 
     public static void setUpDriver() {
