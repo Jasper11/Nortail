@@ -14,7 +14,7 @@ Feature: Login
   @InvalidCredentials
   Scenario Outline: Login with invalid credentials
     When User perform login with "<credentials>"
-    Then User sees message as "<errorText>"
+    Then User observe popUp with message "<errorText>"
     Examples:
       | credentials | errorText            |
       | invalid_1   | Invalid  Credentials |
@@ -23,7 +23,7 @@ Feature: Login
   @MissingUsername/Password
   Scenario Outline: Login with blank username/password
     When User perform login with "<credentials>"
-    Then User sees message as "<errorText>"
+    Then User observe popUp with message "<errorText>"
 
     Examples:
       | credentials | errorText                         |

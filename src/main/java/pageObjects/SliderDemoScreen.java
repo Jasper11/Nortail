@@ -11,7 +11,7 @@ public class SliderDemoScreen extends BaseScreen {
         return waitForElementVisibility(locator).isDisplayed();
     }
 
-    public void setSliderValue(Double percentage){
+    public void setSliderValue(Double percentage) {
         swipeElementForItsWidthPercentage(waitForElementVisibility(slider), percentage);
     }
 }

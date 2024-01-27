@@ -1,5 +1,6 @@
 package pageObjects;
 
+import enums.Direction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -11,7 +12,6 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import enums.Direction;
 import utils.HelperClass;
 
 import java.time.Duration;
@@ -28,6 +28,11 @@ public abstract class BaseScreen {
 
     public boolean isPopUpWithTextDisplayed(String text) {
         return waitForElementVisibility(popUpTextElement).getText().equals(text);
+    }
+
+    public boolean isTextDisplayed(String text) {
+        By successMessage = By.xpath(String.format("//android.widget.TextView[@text='%s']", text));
+        return waitForElementVisibility(successMessage).isDisplayed();
     }
 
     public boolean isDisplayed(By element) {

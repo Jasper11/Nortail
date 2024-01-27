@@ -6,13 +6,13 @@ import org.openqa.selenium.NotFoundException;
 
 public class VerticalSwipeDemoScreen extends BaseScreen {
 
-    public boolean checkIsTextDisplayed(String text) {
+    public boolean isTextDisplayed(String text) {
         By element = By.xpath(String.format("//android.widget.TextView[@text='%s']", text));
         int counter = 0;
         while (!isDisplayed(element) && counter < 3) {
             performSwipe(Direction.UP);
             counter++;
-            if(counter == 3){
+            if (counter == 3) {
                 throw new NotFoundException(String.format("Element not found by: %s", element));
             }
         }

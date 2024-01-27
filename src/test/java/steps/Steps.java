@@ -1,22 +1,22 @@
 package steps;
 
 import dataProvider.JsonDataReader;
-import pageObjects.CarouselDemoScreen;
-import pageObjects.DoubleTapDemoScreen;
-import pageObjects.DragNDropDemoScreen;
-import pageObjects.LongPressDemoScreen;
-import pageObjects.NativeViewDemoScreen;
-import pageObjects.SampleListDemoScreen;
+import enums.Direction;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.LoginDemoScreen;
 import org.testng.Assert;
+import pageObjects.CarouselDemoScreen;
+import pageObjects.DoubleTapDemoScreen;
+import pageObjects.DragNDropDemoScreen;
+import pageObjects.LoginDemoScreen;
+import pageObjects.LongPressDemoScreen;
+import pageObjects.NativeViewDemoScreen;
+import pageObjects.SampleListDemoScreen;
 import pageObjects.SliderDemoScreen;
 import pageObjects.VerticalSwipeDemoScreen;
 import pageObjects.WheelPickerDemoScreen;
 import testDataTypes.UserCredentials;
-import enums.Direction;
 
 import java.io.IOException;
 
@@ -62,37 +62,37 @@ public class Steps {
     }
 
     /// Native View steps
-    @Then("User sees text {string} on native view")
+    @Then("Text {string} is present")
     public void verifyTextDisplayed(String text) {
-        Assert.assertTrue(nativeViewDemoScreen.textDisplayed(text));
+        Assert.assertTrue(nativeViewDemoScreen.isTextDisplayed(text));
     }
 
     /// Vertical swipe steps
-    @Then("User sees {string} text on vertical swipe view")
+    @Then("Observes {string} text on vertical swipe view")
     public void isTextDisplayed(String text) {
-        Assert.assertTrue(verticalSwipeDemoScreen.checkIsTextDisplayed(text));
+        Assert.assertTrue(verticalSwipeDemoScreen.isTextDisplayed(text));
     }
 
     /// Double tap screen steps
-    @When("User make double tap on button")
-    public void makeDoubleTap() {
+    @When("Perform double tap on button")
+    public void performDoubleTap() {
         doubleTapDemoScreen.doubleTapButton();
     }
 
     /// Long press screen steps
-    @When("User make long press on button")
-    public void makeLongPress() {
+    @When("Perform long press on button")
+    public void performLongPress() {
         longPressDemoScreen.longPressButton();
     }
 
     /// Drag n Drop  screen steps
-    @When("User drag n drop circle")
+    @When("drag n drop circle")
     public void makeDragNDrop() {
         dragNDropDemoScreen.dragNDropCircle();
     }
 
-    @Then("User sees success message")
-    public void verifySuccessMessage() {
+    @Then("User observe drag & drop success message")
+    public void verifyDragNDropSuccessMessage() {
         Assert.assertTrue(dragNDropDemoScreen.successMessageIsDisplayed());
     }
 
@@ -107,36 +107,36 @@ public class Steps {
         carouselDemoScreen.performSwipe(Direction.RIGHT);
     }
 
-    @Then("User sees text {string}")
-    public void verifyTextChanged(String text) {
-        Assert.assertTrue(carouselDemoScreen.messageWithTextDisplayed(text));
+    @Then("User observe text {string} on Square")
+    public void verifyText(String text) {
+        Assert.assertTrue(carouselDemoScreen.isTextDisplayed(text));
     }
 
     /// Dropdown Picker steps
-    @When("User selects in picker item with {string} text")
+    @When("Select in picker item with {string} text")
     public void selectPickerItem(String text) {
         wheelPickerDemoScreen.selectPickerItemWithText(text);
     }
 
     @Then("User sees message with {string} text")
     public void verifyPickerSelectedItemText(String text) {
-        Assert.assertTrue(wheelPickerDemoScreen.messageWithTextDisplayed(text));
+        Assert.assertTrue(wheelPickerDemoScreen.isTextDisplayed(text));
     }
 
     /// Slider steps
-    @When("User sets slider value with {double} percentage")
+    @When("Set slider value with {double} percentage")
     public void setSliderValueInPercentage(Double percentage) {
         sliderDemoScreen.setSliderValue(percentage);
     }
 
-    @Then("slider is set with {string} value")
+    @Then("Slider is set with {string} value")
     public void verifySliderValue(String text) {
         Assert.assertTrue(sliderDemoScreen.isSliderSetWithValue(text));
     }
 
     /// Common steps
-    @Then("User sees message as {string}")
-    public void verifyErrorMessage(String errorText) {
-        Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(errorText));
+    @Then("User observe popUp with message {string}")
+    public void verifyPopUpMessage(String message) {
+        Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(message));
     }
 }
