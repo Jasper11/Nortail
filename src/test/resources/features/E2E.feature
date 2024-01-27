@@ -62,7 +62,12 @@ Feature: Test Views
 #    And User selects in picker item with "green" text
 #    Then User sees message with "Current Color: green" text
 
-  Scenario: Test Slider
-    When User navigates to "Slider" view
+#  Scenario: Test Slider
+#    When User navigates to "Slider" view
+#    And User sets slider value with 0.5 percentage
+#    Then slider is set with "64.0" value
+
+  Scenario: Test WebView
+    When User navigates to "Slissder" view
     And User sets slider value with 0.5 percentage
     Then slider is set with "64.0" value

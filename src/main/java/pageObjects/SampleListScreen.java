@@ -11,12 +11,15 @@ public class SampleListScreen extends BaseScreen {
         return waitForElementVisibility(screenHeader).isDisplayed();
     }
 
-    public void navigateTo(String viewItem) {
+    public void navigateTo(String viewItem) throws Exception {
         By element = By.xpath(String.format("//android.widget.TextView[@text='%s']", viewItem));
         int counter = 0;
-        while (!isDisplayed(element) && counter < 5) {
+        while (!isDisplayed(element) && counter < 3) {
             performSwipe(Direction.UP);
             counter++;
+            if(counter == 3){
+                throw new Exception(String.format("Element not found by: %s", element));
+            }
         }
         waitForElementVisibility(element).click();
     }

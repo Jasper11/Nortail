@@ -53,7 +53,7 @@ public class Steps {
     }
 
     @When("User navigates to {string} view")
-    public void navigateToView(String view) {
+    public void navigateToView(String view) throws Exception {
         sampleListScreen.navigateTo(view);
     }
 
