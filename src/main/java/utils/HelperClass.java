@@ -4,6 +4,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Objects;
+
 public class HelperClass {
 
     private static HelperClass instance;
@@ -11,7 +15,7 @@ public class HelperClass {
     private static AppiumDriverLocalService service;
     private static String currentAppBundleId;
 
-    private HelperClass() {
+    private HelperClass() throws MalformedURLException {
         service = AppiumDriverLocalService.buildDefaultService();
         service.start();
 
@@ -20,7 +24,15 @@ public class HelperClass {
             .autoGrantPermissions()
             .setApp(System.getProperty("appPath"));
 
-        driver = new AndroidDriver(service.getUrl(), options);
+        URL url = null;
+        if (System.getProperty("env").equalsIgnoreCase("local")) {
+            url = service.getUrl();
+        }
+        if (System.getProperty("env").equalsIgnoreCase("cloud")) {
+            url = new URL("http://username:accessKey@hub-cloud.browserstack.com/wd/hub");
+        }
+
+        driver = new AndroidDriver(Objects.requireNonNull(url), options);
         currentAppBundleId = driver.getCurrentPackage();
     }
 
@@ -32,7 +44,7 @@ public class HelperClass {
         return currentAppBundleId;
     }
 
-    public static void setUpDriver() {
+    public static void setUpDriver() throws MalformedURLException {
 
         if (instance == null) {
 

@@ -7,12 +7,14 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import utils.HelperClass;
 
+import java.net.MalformedURLException;
+
 @CucumberOptions(tags = "", features = "src/test/resources/features", glue = "steps",
     plugin = {})
 
 public class CucumberRunnerTests extends AbstractTestNGCucumberTests {
     @BeforeTest(alwaysRun = true)
-    public static void setUp() {
+    public static void setUp() throws MalformedURLException {
         HelperClass.setUpDriver();
     }
 
