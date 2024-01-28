@@ -1,0 +1,16 @@
+userName: ivanfedun_KOtgU8
+accessKey: gxF1xzuFzkdGpyFz1jx9
+framework: testng
+app: src/test/apks/appiumChallenge.apk
+platforms:
+  - platformName: android
+    deviceName: Samsung Galaxy S10
+    platformVersion: 9.0
+parallelsPerPlatform: 1
+browserstackLocal: true
+buildName: testBuild
+buildIdentifier: ${BUILD_NUMBER}
+projectName: Nortal
+testObservability: true
+debug: true
+networkLogs: true
