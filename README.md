@@ -111,9 +111,16 @@ Now you have set up the Android Emulator and are ready to use it for testing wit
 
 ## Running Tests from Terminal
 
-1. Open a terminal in project root folder and run:
+1. To run tests locally, open a terminal in project root folder and run:
 
     ```bash
-    mvn clean test -DdeviceId={device_or_simulator_id} -DappPath={app_path}
+    mvn clean test -DdeviceId={device_or_simulator_id} -DappPath={app_path} -Denv=local
 
     ```
+2. To run tests on cloud, open a terminal in project root folder and run:
+
+    ```bash
+    mvn clean test -Denv=cloud
+
+    ``` 
+   Note: app & device are specified in browserstack.yml
