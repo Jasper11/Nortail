@@ -6,7 +6,7 @@ public class LoginDemoScreen extends BaseScreen {
 
     By userNameField = By.xpath("//android.widget.EditText[@content-desc='username']");
     By passwordField = By.xpath("//android.widget.EditText[@content-desc='password']");
-    By loginButton = By.xpath("//android.widget.Button");
+    By loginButton = By.xpath("//android.widget.TextView[@text='LOG IN']");
 
     public boolean isLoginScreenDisplayed() {
         return waitForElementVisibility(loginButton).isDisplayed();
