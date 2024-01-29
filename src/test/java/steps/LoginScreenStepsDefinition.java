@@ -15,6 +15,9 @@ public class LoginScreenStepsDefinition {
 
     LoginDemoScreen loginDemoScreen = new LoginDemoScreen();
     SampleListDemoScreen sampleListDemoScreen = new SampleListDemoScreen();
+    JsonDataReader jsonDataReader = new JsonDataReader();
+
+    public LoginScreenStepsDefinition() throws IOException {}
 
     @Given("User is on login screen")
     public void verifyLoginScreenIsDisplayed() {
@@ -22,8 +25,8 @@ public class LoginScreenStepsDefinition {
     }
 
     @When("I perform login with {string}")
-    public void performLogin(String testDataSetName) throws IOException {
-        LoginTestData loginTestData = new JsonDataReader().getTestDataSetSetByName(testDataSetName);
+    public void performLogin(String testDataSetName) {
+        LoginTestData loginTestData = jsonDataReader.getTestDataSetByName(testDataSetName);
         loginDemoScreen.login(loginTestData.username, loginTestData.password);
     }
 
@@ -33,8 +36,8 @@ public class LoginScreenStepsDefinition {
     }
 
     @Then("I see popUp with message from {string} on Login screen")
-    public void verifyPopUpMessageOnLoginScreen(String testDataSetName) throws IOException {
-        LoginTestData loginTestData = new JsonDataReader().getTestDataSetSetByName(testDataSetName);
+    public void verifyPopUpMessageOnLoginScreen(String testDataSetName) {
+        LoginTestData loginTestData = jsonDataReader.getTestDataSetByName(testDataSetName);
         Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(loginTestData.errorMessage));
     }
 }

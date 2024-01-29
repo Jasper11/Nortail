@@ -28,7 +28,7 @@ public class JsonDataReader {
         }
     }
 
-    public final LoginTestData getTestDataSetSetByName(String name) {
+    public final LoginTestData getTestDataSetByName(String name) {
         return loginTestDataList.stream().filter(x -> x.testDataSetName.equalsIgnoreCase(name)).findAny().get();
     }
 
