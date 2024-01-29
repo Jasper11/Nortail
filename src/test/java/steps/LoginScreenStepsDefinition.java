@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.LoginDemoScreen;
 import pageObjects.SampleListDemoScreen;
-import testDataTypes.UserCredentials;
+import testDataTypes.LoginTestData;
 
 import java.io.IOException;
 
@@ -22,9 +22,9 @@ public class LoginScreenStepsDefinition {
     }
 
     @When("I perform login with {string}")
-    public void performLogin(String credentialsSetName) throws IOException {
-        UserCredentials credentials = new JsonDataReader().getCredentialsSetByName(credentialsSetName);
-        loginDemoScreen.login(credentials.username, credentials.password);
+    public void performLogin(String testDataSetName) throws IOException {
+        LoginTestData loginTestData = new JsonDataReader().getTestDataSetSetByName(testDataSetName);
+        loginDemoScreen.login(loginTestData.username, loginTestData.password);
     }
 
     @Then("I get logged in")
@@ -32,8 +32,9 @@ public class LoginScreenStepsDefinition {
         Assert.assertTrue(sampleListDemoScreen.isSampleListScreenDisplayed());
     }
 
-    @Then("I see popUp with message {string} on Login screen")
-    public void verifyPopUpMessageOnLoginScreen(String message) {
-        Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(message));
+    @Then("I see popUp with message from {string} on Login screen")
+    public void verifyPopUpMessageOnLoginScreen(String testDataSetName) throws IOException {
+        LoginTestData loginTestData = new JsonDataReader().getTestDataSetSetByName(testDataSetName);
+        Assert.assertTrue(loginDemoScreen.isPopUpWithTextDisplayed(loginTestData.errorMessage));
     }
 }

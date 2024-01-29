@@ -1,27 +1,31 @@
 [
   {
-    "credentialsSetName": "valid",
+    "testDataSetName": "valid",
     "username": "admin",
     "password": "admin"
   },
   {
-    "credentialsSetName": "invalid_1",
+    "testDataSetName": "invalid_1",
     "username": "admin#",
-    "password": "admin"
+    "password": "admin",
+    "errorMessage": "Invalid  Credentials"
   },
   {
-    "credentialsSetName": "invalid_2",
+    "testDataSetName": "invalid_2",
     "username": "admin",
-    "password": "admin#"
+    "password": "admin#",
+    "errorMessage": "Invalid  Credentials"
   },
   {
-    "credentialsSetName": "empty_1",
+    "testDataSetName": "empty_1",
     "username": "",
-    "password": "admin"
+    "password": "admin",
+    "errorMessage": "Please enter Username or password"
   },
   {
-    "credentialsSetName": "empty_2",
+    "testDataSetName": "empty_2",
     "username": "admin",
-    "password": ""
+    "password": "",
+    "errorMessage": "Please enter Username or password"
   }
 ]
