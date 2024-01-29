@@ -5,16 +5,16 @@ Feature: Login
 
   @ValidCredentials
   Scenario Outline: Login with valid credentials
-    When User perform login with "<credentials>"
-    Then User is logged successfully and Sample List screen is opened
+    When I perform login with "<credentials>"
+    Then I get logged in
     Examples:
       | credentials |
       | valid       |
 
   @InvalidCredentials
   Scenario Outline: Login with invalid credentials
-    When User perform login with "<credentials>"
-    Then User observe popUp with message "<errorText>"
+    When I perform login with "<credentials>"
+    Then I see popUp with message "<errorText>" on Login screen
     Examples:
       | credentials | errorText            |
       | invalid_1   | Invalid  Credentials |
@@ -22,8 +22,8 @@ Feature: Login
 
   @MissingUsername/Password
   Scenario Outline: Login with blank username/password
-    When User perform login with "<credentials>"
-    Then User observe popUp with message "<errorText>"
+    When I perform login with "<credentials>"
+    Then I see popUp with message "<errorText>" on Login screen
 
     Examples:
       | credentials | errorText                         |
